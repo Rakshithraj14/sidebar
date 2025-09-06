@@ -1,0 +1,125 @@
+/* Sidebar.css */
+
+body {
+  background: #17132a url("./bg.jpg");
+  background-size: cover;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(rgb(0 0 0 / 75%), rgb(0 0 0 / 0%));
+}
+
+.sidebar button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sidebar.open {
+  width: 190px;
+}
+
+.sidebar.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190px;
+}
+
+.sidebar {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+  bottom: 26px;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 6%);
+  width: 56px;
+  background: rgb(255 255 255 / 6%);
+  backdrop-filter: blur(10px);
+  transition: width 0.45s;
+}
+
+.sidebar header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 6px;
+  gap: 0px;
+}
+
+.burger {
+  width: 44px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  color: #f9f9f9;
+}
+
+.sidebar header > img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  border-radius: 0px;
+}
+
+.sidebar nav {
+  display: grid;
+  padding: 0 6px;
+  gap: 2px;
+}
+
+.sidebar nav > button {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  text-transform: capitalize;
+  align-items: center;
+  height: 44px;
+  width: 44px;
+  line-height: 1;
+  color: #f9f9f9;
+  transition: 0.3s;
+  padding: 0 12px;
+  border-radius: 8px;
+  opacity: 0.7;
+}
+
+.sidebar nav > button.active {
+  background: rgb(255 255 255 / 10%);
+  opacity: 1;
+}
+
+.sidebar nav > button:hover {
+  background: rgb(255 255 255 / 6%);
+  opacity: 1;
+}
+
+.sidebar:not(.open) nav > button:hover p {
+  opacity: 1;
+  background: rgb(0 0 0 / 20%);
+  padding: 8px 12px;
+  border-radius: 6px;
+  translate: 10px 0;
+  backdrop-filter: blur(10px);
+}
+
+.sidebar header > img,
+.sidebar nav > button p {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+.sidebar.open :is(nav button p, header > img) {
+  opacity: 1;
+}
+
+.sidebar.open nav > button {
+  width: 100%;
+}
